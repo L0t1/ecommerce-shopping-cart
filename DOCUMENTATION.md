@@ -81,17 +81,36 @@ A simple e-commerce shopping cart system built with Laravel and React that allow
    - Order confirmation page
    - Cart clearing after successful checkout
 
-### Admin Features (Automated)
-1. **Low Stock Alerts**
-   - Automatic email when product stock falls below threshold
+5. **Theme Support**
+   - Dark mode toggle
+   - Persistent theme preference
+   - Fully styled dark/light components
+
+### Admin Features
+1. **Role-Based Access Control**
+   - Admin users identified by `is_admin` flag in database
+   - Protected routes with custom `EnsureUserIsAdmin` middleware
+   - Conditional UI elements (admin navigation only visible to admins)
+   - Backend authorization preventing unauthorized access
+
+2. **Product Management Dashboard**
+   - **Create Products**: Add new products with name, description, price, stock, and threshold
+   - **Edit Products**: Update existing product information
+   - **Delete Products**: Remove products (protected - cannot delete products with existing orders)
+   - **View All Products**: Paginated table view with edit/delete actions
+   - Accessible at `/admin/products` route
+
+3. **Automated Email Notifications**
+   - **Low Stock Alerts**: Automatic email when product stock falls below threshold
    - Queued job processing for performance
    - Detailed product information in email
+   - Triggered during checkout process
 
-2. **Daily Sales Reports**
-   - Scheduled report every evening
+4. **Daily Sales Reports**
+   - Scheduled report every evening at 6 PM
    - Summary of all products sold that day
    - Total revenue and items sold
-   - Product-wise breakdown
+   - Product-wise breakdown with quantities
 
 ---
 
@@ -179,6 +198,16 @@ php artisan tinker
 User::create([
     'name' => 'Admin User',
     'email' => 'admin@example.com',
+    'is_admin' => true,
+    'password' => bcrypt('password'),
+    'email_verified_at' => now()
+]);
+```
+
+**Note**: The database seeder automatically creates an admin user. If you ran `php artisan db:seed`, the admin user already exists with:
+- Email: `admin@example.com`
+- Password: `password`
+- Admin access: enabled (`is_admin = true`)
     'password' => bcrypt('password'),
     'email_verified_at' => now()
 ]);

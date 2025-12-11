@@ -89,7 +89,13 @@ Use this checklist to ensure your E-commerce Shopping Cart application is proper
   php artisan migrate
   ```
 
-- [ ] **Create admin user**
+- [ ] **Seed database with sample data (Recommended)**
+  ```bash
+  php artisan db:seed
+  ```
+  > This creates admin user (admin@example.com/password) and sample products
+
+- [ ] **OR create admin user manually**
   ```bash
   php artisan tinker
   ```
@@ -97,14 +103,10 @@ Use this checklist to ensure your E-commerce Shopping Cart application is proper
   User::create([
       'name' => 'Admin User',
       'email' => 'admin@example.com',
+      'is_admin' => true,
       'password' => bcrypt('password'),
       'email_verified_at' => now()
   ]);
-  ```
-
-- [ ] **Seed database (optional)**
-  ```bash
-  php artisan db:seed
   ```
 
 ---
