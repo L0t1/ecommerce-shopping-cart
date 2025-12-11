@@ -28,9 +28,9 @@ class LowStockNotification implements ShouldQueue
     public function handle(): void
     {
         // Get the admin user
-        $admin = User::where('email', 'admin@example.com')->first();
+        $admin = User::where('is_admin', true)->first();
 
-        if ($admin) {
+    if ($admin) {
             Mail::to($admin->email)->send(new LowStockMail($this->product));
         }
     }
