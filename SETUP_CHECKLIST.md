@@ -64,12 +64,14 @@ Use this checklist to ensure your E-commerce Shopping Cart application is proper
 
 ## 🗄️ Database Setup
 
-- [ ] **Configure database** in .env:
+- [ ] **Default: SQLite** (Already configured, no setup needed)
   ```env
-  # For SQLite (easiest for testing):
   DB_CONNECTION=sqlite
-  
-  # Or for MySQL:
+  ```
+  > SQLite database file will be created automatically at `database/database.sqlite`
+
+- [ ] **Optional: Switch to MySQL**
+  ```env
   DB_CONNECTION=mysql
   DB_HOST=127.0.0.1
   DB_PORT=3306
@@ -77,8 +79,7 @@ Use this checklist to ensure your E-commerce Shopping Cart application is proper
   DB_USERNAME=root
   DB_PASSWORD=
   ```
-
-- [ ] **Create database** (if using MySQL):
+  Then create the database:
   ```bash
   # MySQL command line
   CREATE DATABASE ecommerce;

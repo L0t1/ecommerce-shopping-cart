@@ -158,13 +158,16 @@ APP_ENV=local
 APP_DEBUG=true
 APP_URL=http://localhost
 
-# Database
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=ecommerce
-DB_USERNAME=root
-DB_PASSWORD=
+# Database (SQLite - Default)
+DB_CONNECTION=sqlite
+
+# OR Database (MySQL - Uncomment to use)
+# DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=ecommerce
+# DB_USERNAME=root
+# DB_PASSWORD=
 
 # Mail Configuration (Mailtrap)
 MAIL_MAILER=smtp

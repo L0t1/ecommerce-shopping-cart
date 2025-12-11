@@ -67,10 +67,16 @@ php artisan key:generate
 
 4. **Configure database** (Edit `.env` file)
 ```env
-DB_CONNECTION=mysql
-DB_DATABASE=your_database_name
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
+# SQLite (Default - No additional setup needed)
+DB_CONNECTION=sqlite
+
+# OR MySQL (Uncomment and configure)
+# DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=your_database_name
+# DB_USERNAME=your_username
+# DB_PASSWORD=your_password
 ```
 
 5. **Configure email** (Edit `.env` file for Mailtrap)
